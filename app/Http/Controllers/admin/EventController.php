@@ -13,7 +13,12 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Event::all();
+        $events = Event::all();
+
+        return response()->json([
+            'count' => $events->count(),
+            'data' => $events
+        ]);
     }
 
     /**
@@ -31,7 +36,10 @@ class EventController extends Controller
 
         $event = Event::create($fields);
 
-        return $event;
+        return response()->json([
+            'message' => 'Event data created successfully',
+            'data' => $event
+        ]);
     }
 
     /**
@@ -39,7 +47,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return $event;
+        return response()->json([
+            'message' => 'Event data founded',
+            'data' => $event
+        ]);
     }
 
     /**
@@ -57,7 +68,10 @@ class EventController extends Controller
 
         $event->update($fields);
 
-        return $event;
+        return response()->json([
+            'message' => 'Event data updated successfully',
+            'data' => $event
+        ]);
     }
 
     /**
@@ -67,6 +81,9 @@ class EventController extends Controller
     {
         $event->delete();
 
-        return ['message', 'Data telah dihapus'];
+        return response()->json([
+            'message' => 'Event data deleted successfully.',
+            'count' => Event::count()
+        ]);
     }
 }

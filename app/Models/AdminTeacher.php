@@ -9,6 +9,8 @@ class AdminTeacher extends Model
 {
     use HasFactory;
 
+    protected $table = 'admin_teachers';
+
     protected $fillable = [
         'nig',
         'name',
@@ -32,4 +34,8 @@ class AdminTeacher extends Model
         'note',
     ];
     
+    public function projectTask()
+    {
+        return $this->hasMany(ProjectTask::class);
+    }
 }

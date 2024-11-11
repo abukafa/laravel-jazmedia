@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\AdminTeacher as Teacher;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
@@ -13,7 +13,12 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return Teacher::all();
+        $teachers = Teacher::all();
+
+        return response()->json([
+            'count' => $teachers->count(),
+            'data' => $teachers
+        ]);
     }
 
     /**
@@ -22,15 +27,18 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'nig' => 'required|unique:teachers,nis',
+            'nig' => 'required|unique:admin_teachers,nis',
             'name' => 'required',
-            'nickname' => 'required|unique:teachers,nickname',
+            'nickname' => 'required|unique:admin_teachers,nickname',
             'gender' => 'required'
         ]);
 
         $teacher = Teacher::create($fields);
 
-        return $teacher;
+        return response()->json([
+            'message' => 'Teacher data created successfully',
+            'data' => $teacher
+        ]);
     }
 
     /**
@@ -38,7 +46,10 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        return $teacher;
+        return response()->json([
+            'message' => 'Teacher data founded',
+            'data' => $teacher
+        ]);
     }
 
     /**
@@ -48,13 +59,16 @@ class TeacherController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required',
-            'nickname' => 'required|unique:teachers,nickname',
+            'nickname' => 'required|unique:admin_teachers,nickname',
             'gender' => 'required'
         ]);
 
         $teacher->update($fields);
 
-        return $teacher;
+        return response()->json([
+            'message' => 'Teacher data updated successfully',
+            'data' => $teacher
+        ]);
     }
 
     /**
@@ -64,6 +78,9 @@ class TeacherController extends Controller
     {
         $teacher->delete();
 
-        return ['message' => 'Data telah dihapus'];
+        return response()->json([
+            'message' => 'Teacher data deleted successfully.',
+            'count' => Teacher::count()
+        ]);
     }
 }

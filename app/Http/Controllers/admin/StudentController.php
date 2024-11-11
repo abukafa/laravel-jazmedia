@@ -13,7 +13,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+        $students = Student::all();
+
+        return response()->json([
+            'count' => $students->count(),
+            'data' => $students
+        ]);
     }
 
     /**
@@ -22,15 +27,18 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'nis' => 'required|unique:students,nis',
+            'nis' => 'required|unique:admin_students,nis',
             'name' => 'required',
-            'nickname' => 'required|unique:students,nickname',
+            'nickname' => 'required|unique:admin_students,nickname',
             'gender' => 'required'
         ]);
 
         $student = Student::create($fields);
 
-        return $student;
+        return response()->json([
+            'message' => 'Student data created successfully',
+            'data' => $student
+        ]);
     }
 
     /**
@@ -38,7 +46,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return $student;
+        return response()->json([
+            'message' => 'Teacher data founded',
+            'data' => $student
+        ]);
     }
 
     /**
@@ -48,13 +59,16 @@ class StudentController extends Controller
     {
         $fields = $request->validate([
             'name' => 'required',
-            'nickname' => 'required|unique:students,nickname',
+            'nickname' => 'required|unique:admin_students,nickname',
             'gender' => 'required'
         ]);
 
         $student->update($fields);
 
-        return $student;
+        return response()->json([
+            'message' => 'Student data updated successfully',
+            'data' => $student
+        ]);
     }
 
     /**
@@ -64,6 +78,9 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return ['message' => 'Data telah dihapus'];
+        return response()->json([
+            'message' => 'Student data deleted successfully.',
+            'count' => Student::count()
+        ]);
     }
 }

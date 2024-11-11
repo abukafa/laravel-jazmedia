@@ -5,18 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdminEvent extends Model
+class ProjectPlan extends Model
 {
     use HasFactory;
 
-    protected $table = 'admin_events';
+    protected $table = 'project_plans';
 
     protected $fillable = [
-        'title',
+        'subject',
+        'theme',
         'description',
         'start_date',
         'end_date',
-        'remark',
+        'is_active',
     ];
     
+    public function projectTask()
+    {
+        return $this->hasMany(ProjectTask::class);
+    }
 }

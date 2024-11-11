@@ -9,6 +9,8 @@ class AdminSchool extends Model
 {
     use HasFactory;
 
+    protected $table = 'admin_schools';
+
     protected $fillable = [
         'name',
         'nickname',

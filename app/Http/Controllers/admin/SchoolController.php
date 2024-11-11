@@ -13,7 +13,12 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        return School::all();
+        $schools = School::all();
+
+        return response()->json([
+            'count' => $schools->count(),
+            'data' => $schools
+        ]);
     }
 
     /**
@@ -27,7 +32,10 @@ class SchoolController extends Controller
 
         $school = School::create($fields);
 
-        return $school;
+        return response()->json([
+            'message' => 'School data created successfully',
+            'data' => $school
+        ]);
     }
 
     /**
@@ -35,7 +43,10 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        return $school;
+        return response()->json([
+            'message' => 'School data founded',
+            'data' => $school
+        ]);
     }
 
     /**
@@ -49,7 +60,10 @@ class SchoolController extends Controller
 
         $school->update($fields);
 
-        return $school;
+        return response()->json([
+            'message' => 'School data updated successfully',
+            'data' => $school
+        ]);
     }
 
     /**
@@ -59,6 +73,9 @@ class SchoolController extends Controller
     {
         $school->delete();
 
-        return ['message', 'Data telah dihapus'];
+        return response()->json([
+            'message' => 'School data deleted successfully.',
+            'count' => School::count()
+        ]);
     }
 }

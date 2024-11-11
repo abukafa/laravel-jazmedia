@@ -9,6 +9,8 @@ class AdminStudent extends Model
 {
     use HasFactory;
 
+    protected $table = 'admin_students';
+
     protected $fillable = [
         'nis',
         'name',
@@ -48,4 +50,9 @@ class AdminStudent extends Model
         'next_school_address',
         'note'
     ];
+    
+    public function projectTask()
+    {
+        return $this->hasMany(ProjectTask::class);
+    }
 }
