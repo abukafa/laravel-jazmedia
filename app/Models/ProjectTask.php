@@ -37,16 +37,36 @@ class ProjectTask extends Model
     }
 
     public function projectPlan() {
-        return $this->belongsTo(ProjectPlan::class, 'project_plan_id');
+        return $this->belongsTo(ProjectPlan::class);
     }
 
     public function adminStudent()
     {
-        return $this->belongsTo(AdminStudent::class, 'admin_student_id');
+        return $this->belongsTo(AdminStudent::class);
     }
 
     public function adminTeacher()
     {
-        return $this->belongsTo(AdminTeacher::class, 'admin_teacher_id');
+        return $this->belongsTo(AdminTeacher::class);
+    }
+    
+    public function mediaBookmark()
+    {
+        return $this->hasMany(MediaBookmark::class);
+    }
+    
+    public function mediaLike()
+    {
+        return $this->hasMany(MediaLike::class);
+    }
+    
+    public function mediaComment()
+    {
+        return $this->hasMany(MediaComment::class);
+    }
+    
+    public function mediaStory()
+    {
+        return $this->hasMany(MediaStory::class);
     }
 }
