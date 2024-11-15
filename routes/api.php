@@ -20,6 +20,10 @@ use App\Http\Controllers\finance\AccountController;
 use App\Http\Controllers\finance\FinanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\payment\BillingController;
+use App\Http\Controllers\payment\DiscountController;
+use App\Http\Controllers\payment\PaymentController;
+use App\Http\Controllers\payment\SavingController;
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
@@ -51,3 +55,8 @@ Route::apiResource('scores', ScoreController::class);
 
 Route::apiResource('accounts', AccountController::class);
 Route::apiResource('finances', FinanceController::class);
+
+Route::apiResource('billings', BillingController::class);
+Route::apiResource('discounts', DiscountController::class);
+Route::apiResource('payments', PaymentController::class);
+Route::apiResource('savings', SavingController::class);

@@ -5,27 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FinanceAccount extends Model
+class PaymentBilling extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'number',
-        'unit',
-        'description',
-        'detail',
-        'allocation',
-    ];   
+        'year',
+        'category',
+        'finance_account_id',
+        'name',
+        'amount',
+        'is_once',
+        'is_monthly',
+        'note',
+    ];    
 
-    public function financeItem()
+    public function financeAccount()
     {
-        return $this->hasMany(FinanceItem::class);
-    } 
-
-    public function paymentBilling()
-    {
-        return $this->hasMany(PaymentBilling::class);
-    } 
+        return $this->belongsTo(FinanceAccount::class);
+    }
     
     public function paymentDiscount()
     {
@@ -37,4 +35,3 @@ class FinanceAccount extends Model
         return $this->hasMany(PaymentItem::class);
     }
 }
-

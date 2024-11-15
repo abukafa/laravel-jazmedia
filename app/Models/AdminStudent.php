@@ -60,4 +60,19 @@ class AdminStudent extends Model
     {
         return $this->hasMany(AcademyAward::class);
     }
+    
+    public function paymentDiscount()
+    {
+        return $this->hasMany(PaymentDiscount::class);
+    }
+    
+    public function paymentItem()
+    {
+        return $this->hasMany(PaymentItem::class);
+    }
+    
+    public function paymentSaving()
+    {
+        return $this->hasMany(PaymentSaving::class);
+    }
 }
