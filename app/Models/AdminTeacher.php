@@ -38,4 +38,10 @@ class AdminTeacher extends Model
     {
         return $this->hasMany(ProjectTask::class);
     }
+
+    public function academyCompetence()
+    {
+        return $this->hasMany(AcademyCompetence::class);
+    }
+
 }

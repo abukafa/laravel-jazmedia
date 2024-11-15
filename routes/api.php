@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\academy\AwardController;
+use App\Http\Controllers\academy\CompetenceController;
+use App\Http\Controllers\academy\CourseController;
+use App\Http\Controllers\academy\ScoreController;
+use App\Http\Controllers\academy\SubjectController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\SchoolController;
 use App\Http\Controllers\admin\StudentController;
@@ -13,6 +17,7 @@ use App\Http\Controllers\media\StoryController;
 use App\Http\Controllers\project\PlanController;
 use App\Http\Controllers\project\TaskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
@@ -35,3 +40,9 @@ Route::apiResource('bookmarks', BookmarkController::class);
 Route::apiResource('likes', LikeController::class);
 Route::apiResource('comments', CommentController::class);
 Route::apiResource('stories', StoryController::class);
+
+Route::apiResource('courses', CourseController::class);
+Route::apiResource('awards', AwardController::class);
+Route::apiResource('subjects', SubjectController::class);
+Route::apiResource('competences', CompetenceController::class);
+Route::apiResource('scores', ScoreController::class);

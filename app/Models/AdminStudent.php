@@ -55,4 +55,9 @@ class AdminStudent extends Model
     {
         return $this->hasMany(ProjectTask::class);
     }
+    
+    public function academyAward()
+    {
+        return $this->hasMany(AcademyAward::class);
+    }
 }
