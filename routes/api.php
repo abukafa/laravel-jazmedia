@@ -16,6 +16,8 @@ use App\Http\Controllers\media\ParticipantController;
 use App\Http\Controllers\media\StoryController;
 use App\Http\Controllers\project\PlanController;
 use App\Http\Controllers\project\TaskController;
+use App\Http\Controllers\finance\AccountController;
+use App\Http\Controllers\finance\FinanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -46,3 +48,6 @@ Route::apiResource('awards', AwardController::class);
 Route::apiResource('subjects', SubjectController::class);
 Route::apiResource('competences', CompetenceController::class);
 Route::apiResource('scores', ScoreController::class);
+
+Route::apiResource('accounts', AccountController::class);
+Route::apiResource('finances', FinanceController::class);
