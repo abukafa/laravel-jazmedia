@@ -14,4 +14,9 @@ class AcademySubject extends Model
         'group',
         'name',
     ];
+
+    public function academyCompetence()
+    {
+        return $this->hasMany(AcademyCompetence::class);
+    }
 }

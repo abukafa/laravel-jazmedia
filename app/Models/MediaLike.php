@@ -19,4 +19,8 @@ class MediaLike extends Model
     public function mediaParticipant() {
         return $this->belongsTo(MediaParticipant::class);
     }
+
+    public function projectTask() {
+        return $this->belongsTo(ProjectTask::class);
+    }
 }

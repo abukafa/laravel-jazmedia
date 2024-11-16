@@ -30,33 +30,33 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-Route::apiResource('students', StudentController::class);
-Route::apiResource('teachers', TeacherController::class);
-Route::apiResource('schools', SchoolController::class);
-Route::apiResource('events', EventController::class);
-Route::apiResource('plans', PlanController::class);
-Route::apiResource('tasks', TaskController::class);
-
 Route::apiResource('participants', ParticipantController::class);
 Route::apiResource('bookmarks', BookmarkController::class);
 Route::apiResource('likes', LikeController::class);
 Route::apiResource('comments', CommentController::class);
 Route::apiResource('stories', StoryController::class);
 
-Route::apiResource('courses', CourseController::class);
-Route::apiResource('awards', AwardController::class);
-Route::apiResource('subjects', SubjectController::class);
-Route::apiResource('competences', CompetenceController::class);
-Route::apiResource('scores', ScoreController::class);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::apiResource('accounts', AccountController::class);
-Route::apiResource('finances', FinanceController::class);
+Route::apiResource('schools', SchoolController::class);
+Route::apiResource('students', StudentController::class);
+Route::apiResource('teachers', TeacherController::class);
 
-Route::apiResource('billings', BillingController::class);
-Route::apiResource('discounts', DiscountController::class);
-Route::apiResource('payments', PaymentController::class);
-Route::apiResource('savings', SavingController::class);
+Route::apiResource('events', EventController::class);
+Route::apiResource('plans', PlanController::class);
+Route::apiResource('tasks', TaskController::class);
+
+Route::apiResource('courses', CourseController::class)->middleware('auth:sanctum');
+Route::apiResource('awards', AwardController::class)->middleware('auth:sanctum');
+Route::apiResource('subjects', SubjectController::class)->middleware('auth:sanctum');
+Route::apiResource('competences', CompetenceController::class)->middleware('auth:sanctum');
+Route::apiResource('scores', ScoreController::class)->middleware('auth:sanctum');
+
+Route::apiResource('accounts', AccountController::class)->middleware('auth:sanctum');
+Route::apiResource('finances', FinanceController::class)->middleware('auth:sanctum');
+Route::apiResource('billings', BillingController::class)->middleware('auth:sanctum');
+Route::apiResource('discounts', DiscountController::class)->middleware('auth:sanctum');
+Route::apiResource('payments', PaymentController::class)->middleware('auth:sanctum');
+Route::apiResource('savings', SavingController::class)->middleware('auth:sanctum');

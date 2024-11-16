@@ -64,9 +64,4 @@ class ProjectTask extends Model
     {
         return $this->hasMany(MediaComment::class);
     }
-    
-    public function mediaStory()
-    {
-        return $this->hasMany(MediaStory::class);
-    }
 }
