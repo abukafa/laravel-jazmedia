@@ -32,11 +32,6 @@ const suggestionGroups = [
         title: 'eCommerce',
         url: { name: 'dashboards-ecommerce' },
       },
-      {
-        icon: 'tabler-truck',
-        title: 'Logistics',
-        url: { name: 'dashboards-logistics' },
-      },
     ],
   },
   {
